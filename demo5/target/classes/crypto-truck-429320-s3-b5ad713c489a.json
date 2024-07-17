@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "crypto-truck-429320-s3",
+  "private_key_id": "b5ad713c489a76db5b3abf1e8e47fed22f0a9adf",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDAq0BK5HeSnug/\n84pEuOgOmELIEf0HUy2OWl0CIPF8Rs7pxUKo1tFe5HdV2CKAG77g2+hCKBE4WD2N\njexCWIRQPVdvb2qSyv6wQaAqdaa73sPkMktbTWmM0+D7Dc9NmtU7L3Aaz4Rp0C6a\nSp/AD1gKahWnob9XbgvucJCl5N9d0YoOCZEbgl8ezDj44EC79uL8ECvPAVgwM0m9\nfwieauTfDXxrnpGWMi3zMRnCDtRMbGabzRxLHoL2f8PLaA0YzhOYQBHCfr2aTVx6\noZ1ymMq5h0XyYJMsQrESfHxFiSiqUNW9iqlKq0a+Ra+Jy+/hYsto7ZStFKSYNXDt\nAWKbwz5FAgMBAAECggEAH5WTRxO39F2/dghfEM/9HrNgMzsbrzE4BR+UIq6y16wl\n7FWtjU8V6IfsdjKlyTmDK4pxQzMdS47PnF55LhEjs6GyrS5nGqRTZyKC9qLtz9t/\nYm/KQa/pjzAGsDE93Bt3PCoVJxgAvXXmxd1Y3dvGE4L7hMzzuInuQ8rJM6DW6yKO\n+x6oNI0GPwjJfpi4VEf529DqAHhIaTiCvM+0DdmsVZeDWk/Kzx0CctxFv/+KGFld\nEweEHiNrDOhVUgLOan0YMr8dXdcG9+Q75KleS+kFdesRmQjTjC/E8BaLwITGUkJh\nplQJCD/UAQO9xoTAYJH30u+vQyqE3YpLzbY7e7GCewKBgQDxtnQrNm47O+PpNzFK\n+s8ZWP0loPmaLbhuSfplFyfbj4ZzDb99Pc5UKrHdFOac5YldD4p8yFpz+ev4tfaL\nB2Qd7iTQI4G5qf7CKvz4X8xpzSrc4lnFYBYq4Ki4+MbBj/PpNu6GQnl0SA4T7iSO\nYS1Hiffxl75Bg4rtuqDb8y3gLwKBgQDMDq1r0rmxS1u5OULOCFjoDxHifNkBd7qu\nt714/lOm+gLZnmtCQ8hnqQzbtlwf0IHOt90up+/vGLWfx4iWbB3GoY55xg62ZzSr\ntVMOuMRpPaaWdAMe1maRLtNBH7ws6c7QUei5ej2QPxu4xIrrnT9h8Q6Uoo+6ry1e\nockjyNXXywKBgDsqeCEjv7PMIyuxEOXTouIHgF+3maF904lbnmkkU+NQrI55LQhR\nGrJLiSIevZxmK0uWREXrHQkKghJtKB47/uu8oVI5fsWdsPiCYU3C1VyIlhdfaK4B\nqStxtpsgejZjMEdD5PsERoqKILgMMPKRIu5B/WkrxaxvsJAkgL+WNQKNAoGAY6q/\nlayFOk1+bYfEU3HMSvwhVih4rbjXG8Nu7gv6u9HdVoGEDgeheNAfEamOcZOb82Xm\nyIUKMhQ1kecZla8VFBGQz3WndfwOw9d6y/P/KxALr+zWIVfDHSJr2KExfhZtB18a\ndo14SF4qoiKNX+ucK7Bb2MlVvm8Vj+UhozLTD+UCgYB7GpHzyEc7uNFRKL4CKUZf\nx0WW62z1vaA6aDyvsF5Hwv6k8hH/xkjgwNbxuzAltksmmUIt+ynN/YhMBuAfWK8m\nKMVEwjY5AgLP1iOpLbYeFiFLQDyuKBFGkfBob3ibnIfV3gfS9NgOQrAJDLPMJtPY\nK/nE+z1SCg1LWFbbk5phWw==\n-----END PRIVATE KEY-----\n",
+  "client_email": "wpserviceaccount@crypto-truck-429320-s3.iam.gserviceaccount.com",
+  "client_id": "117355128883272282966",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/wpserviceaccount%40crypto-truck-429320-s3.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

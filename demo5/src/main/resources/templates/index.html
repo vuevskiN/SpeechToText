@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Audio Recorder</title>
+    <script>
+        let mediaRecorder;
+        let recordedBlobs;
+
+        async function startRecording() {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                recordedBlobs = [];
+                mediaRecorder = new MediaRecorder(stream);
+
+                mediaRecorder.ondataavailable = event => {
+                    if (event.data && event.data.size > 0) {
+                        recordedBlobs.push(event.data);
+                    }
+                };
+
+                mediaRecorder.start();
+                setTimeout(stopRecording, 5000); // Record for 5 seconds
+            } catch (error) {
+                console.error('Error accessing media devices.', error);
+            }
+        }
+
+        function stopRecording() {
+            mediaRecorder.stop();
+            mediaRecorder.onstop = async () => {
+                const blob = new Blob(recordedBlobs, { type: 'audio/wav' }); // Adjust type if needed
+
+                // Create an audio element
+                const audioPlayer = document.createElement('audio');
+                audioPlayer.controls = true;
+                audioPlayer.src = URL.createObjectURL(blob);
+
+                // Display the audio player in the audio-container div
+                const audioContainer = document.getElementById('audio-container');
+                audioContainer.innerHTML = '';
+                audioContainer.appendChild(audioPlayer);
+
+                // Create a download link for the recorded audio
+                const downloadLink = document.createElement('a');
+                downloadLink.href = audioPlayer.src;
+                downloadLink.download = 'recordedAudio.wav';
+                downloadLink.textContent = '⋮'; // Unicode character for three dots
+                downloadLink.style.marginLeft = '5px'; // Adjust spacing
+                downloadLink.addEventListener('click', function() {
+                    downloadLink.href = audioPlayer.src;
+                    downloadLink.download = 'recordedAudio.wav';
+                });
+                audioContainer.appendChild(downloadLink);
+
+                // Display audio parameters
+                displayAudioParameters(blob);
+            };
+        }
+
+        async function displayAudioParameters(blob) {
+            try {
+                const audioContext = new AudioContext();
+                const audioBuffer = await blob.arrayBuffer();
+                const audioBufferSource = audioContext.createBufferSource();
+                audioBufferSource.buffer = await audioContext.decodeAudioData(audioBuffer);
+
+                const sampleRate = audioBufferSource.buffer.sampleRate;
+                const sampleSize = audioBufferSource.buffer.sampleRate * audioBufferSource.buffer.duration;
+                const channels = audioBufferSource.buffer.numberOfChannels;
+
+                const parametersDiv = document.getElementById('audio-parameters');
+                parametersDiv.innerHTML = `
+                <h3>Audio Parameters:</h3>
+                <p>Sample Rate: ${sampleRate} Hz</p>
+                <p>Sample Size: ${sampleSize} bits</p>
+                <p>Channels: ${channels}</p>
+            `;
+            } catch (error) {
+                console.error('Error displaying audio parameters:', error);
+            }
+        }
+
+        async function uploadAndTranscribeInputAudio() {
+            const input = document.getElementById('audioInput');
+            const file = input.files[0];
+
+            if (!file) {
+                console.error('No file selected.');
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append('file', file);
+
+            try {
+                const response = await fetch('/audio/upload', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const transcription = await response.text();
+                document.getElementById('transcript').innerText = transcription;
+            } catch (error) {
+                console.error('Error uploading and transcribing audio:', error);
+            }
+        }
+    </script>
+
+</head>
+<body>
+<h1>Audio Recorder</h1>
+<button onclick="startRecording()">Start Recording</button>
+
+<div>
+    <h3>Transcript:</h3>
+    <div id="transcript"></div>
+</div>
+
+<div id="audio-container">
+    <!-- Recorded audio and download link will be displayed here -->
+</div>
+
+<!-- Input field for selecting audio file -->
+<input type="file" id="audioInput">
+
+<!-- Button to upload selected audio file -->
+<button onclick="uploadAndTranscribeInputAudio()">Upload and Transcribe Audio</button>
+
+<!-- Div to display audio parameters -->
+<div id="audio-parameters">
+    <!-- Audio parameters will be displayed here -->
+</div>
+</body>
+</html>
